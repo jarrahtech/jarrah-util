@@ -1,2 +1,3 @@
 # jarrah-util
-Scala utility code
+
+Scala utility code designed for turn-based simulation games  
