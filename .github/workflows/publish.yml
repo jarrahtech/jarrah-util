@@ -7,7 +7,8 @@ env:
   GITHUB_TOKEN: ${{ secrets.TOKEN_WITH_READ_PACKAGES_SCOPE }}
   
 permissions:
-  contents: read
+  contents: write
+  packages: write
 
 jobs:
   build:
