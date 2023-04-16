@@ -50,4 +50,9 @@ class MathTest extends TestCase {
     assertEquals(3d, 0.2.lerp(2, 7), 0.000000001d)
     assertEquals(0.52d, 0.2.lerp(-2.2, 11.4), 0.000000001d)
   }
+
+  @Test def testTruncate: Unit =  {
+    assertEquals(0.3333, truncate(4)(1/3d), 0.0000000000000001)
+    assertEquals(2.3333, truncate(4)(2.3333), 0.0000000000000001)
+  }
 }

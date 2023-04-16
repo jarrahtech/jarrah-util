@@ -5,7 +5,7 @@ ThisBuild / versionScheme := Some("early-semver")
 lazy val root = (project in file("."))
   .settings(
     name := "jarrah-util",
-    version := "0.2",
+    version := "0.3.0",
 
     scalacOptions ++= Seq(
       "-encoding", "utf8", // Option and arguments on same line
