@@ -54,5 +54,6 @@ class MathTest extends TestCase {
   @Test def testTruncate: Unit =  {
     assertEquals(0.3333, truncate(4)(1/3d), 0.0000000000000001)
     assertEquals(2.3333, truncate(4)(2.3333), 0.0000000000000001)
+    assertEquals(3, truncate(4)(2.999999), 0.0000000000000001)
   }
 }

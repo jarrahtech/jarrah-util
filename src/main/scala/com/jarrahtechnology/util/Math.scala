@@ -8,5 +8,5 @@ object Math {
   extension (t: Double) def lerp(lower: Double, upper: Double): Double = lower + t * (upper - lower)
   val log2base10: Double = log10(2d)
   def log2(x: Double): Double = log10(x) / log2base10
-  def truncate(dp: Int)(num: Double): Double = BigDecimal(num).setScale(dp, BigDecimal.RoundingMode.FLOOR).toDouble
+  def truncate(dp: Int)(num: Double): Double = BigDecimal(num).setScale(dp, BigDecimal.RoundingMode.HALF_UP).toDouble
 }
