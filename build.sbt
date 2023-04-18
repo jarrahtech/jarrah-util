@@ -51,7 +51,7 @@ lazy val root = project.in(file(".")).
 lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     name := "jarrah-util",
-    version := "0.3.1",
+    version := "0.3.2",
   ).
   jvmSettings(
     // Add JVM-specific settings here
