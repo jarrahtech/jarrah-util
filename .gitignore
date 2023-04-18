@@ -4,6 +4,8 @@
 .metals/
 .vscode/
 .bsp/
+.js/
+.jvm/
 target/
 project/.bloop
 project/project

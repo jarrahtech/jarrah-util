@@ -1,20 +1,18 @@
 package com.jarrahtechnology.util
 
-import org.junit.Test
-import junit.framework.TestCase
-import org.junit.Assert.*
+import org.scalatest.funsuite.AnyFunSuite
 
-class RomanNumeralsTest extends TestCase {
+class RomanNumeralsTest extends AnyFunSuite {
   
-  @Test def testToRoman: Unit =  {   
-    assertEquals("MMXIX", RomanNumerals.toRoman(2019)) 
-    assertEquals("III", RomanNumerals.toRoman(3)) 
-    assertEquals("MMCMIV", RomanNumerals.toRoman(2904))    
+  test("testToRoman") {   
+    assert("MMXIX" == RomanNumerals.toRoman(2019)) 
+    assert("III" == RomanNumerals.toRoman(3)) 
+    assert("MMCMIV" == RomanNumerals.toRoman(2904))    
   }
 
-  @Test def testFromRoman: Unit =  { 
-    assertEquals(2904, RomanNumerals.fromRoman("MMCMIV"))
-    assertEquals(43, RomanNumerals.fromRoman("XLIII"))
-    assertEquals(2019, RomanNumerals.fromRoman(RomanNumerals.toRoman(2019)))
+  test("testFromRoman") { 
+    assert(2904 == RomanNumerals.fromRoman("MMCMIV"))
+    assert(43 == RomanNumerals.fromRoman("XLIII"))
+    assert(2019 == RomanNumerals.fromRoman(RomanNumerals.toRoman(2019)))
   } 
 }
