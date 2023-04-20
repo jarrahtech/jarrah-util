@@ -1,5 +1,8 @@
 package com.jarrahtechnology.util
 
+import scala.scalajs.js.annotation._
+
+@JSExportTopLevel("RomanNumerals")
 object RomanNumerals {
 
   enum Symbol(val value: Int) {
@@ -20,7 +23,7 @@ object RomanNumerals {
 
   lazy val allNumerals = Symbol.values.sortWith(_.value > _.value).toList
 
-  def toRoman(number: Int): String = {
+  @JSExport def toRoman(number: Int): String = {
     def toSymbols(number: Int, digits: List[Symbol]): String = digits match {
       case Nil    => ""
       case h :: t => h.toString * (number / h.value) + toSymbols(number % h.value, t)
@@ -29,7 +32,7 @@ object RomanNumerals {
     toSymbols(number, allNumerals)
   }
 
-  def fromRoman(numerals: String): Int = {
+  @JSExport def fromRoman(numerals: String): Int = {
     def fromSymbols(numerals: List[Char], acc: Int): Int = acc + (numerals match {
       case Nil                                                                           => 0
       case a :: b :: t if allNumerals.exists(_.toString.equals(a.toString + b.toString)) => fromSymbols(t, Symbol.valueOf(a.toString + b.toString).value)

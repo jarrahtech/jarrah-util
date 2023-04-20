@@ -4,10 +4,11 @@
 .metals/
 .vscode/
 .bsp/
-.js/
-.jvm/
+js/target/
+jvm/target
 target/
 project/.bloop
+project/metals.sbt
 project/project
 project/target
-example.png
+

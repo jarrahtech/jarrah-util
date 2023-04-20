@@ -9,7 +9,16 @@ lazy val root = project.in(file(".")).
     githubRepository := "jarrah-util",
 
     publish := {},
-    publishLocal := {},   
+    publishLocal := {},
+  )
+
+lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
+  settings(
+    name := "jarrah-util",
+    version := "0.4.0",    
+
+    githubOwner := "jarrahtech",
+    githubRepository := "jarrah-util",
 
     resolvers ++= Resolver.sonatypeOssRepos("public"),
     resolvers += Resolver.githubPackages("jarrahtech"),
@@ -18,27 +27,13 @@ lazy val root = project.in(file(".")).
     libraryDependencies += "org.scalatest" %%% "scalatest-funsuite" % "3.2.15" % "test",
 
     wartremoverErrors ++= Warts.unsafe,
-  )
-
-lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
-  settings(
-    name := "jarrah-util",
-    version := "0.4.0",
-
-    // Duplicated because otherwise it doesn't work!
-    githubOwner := "jarrahtech",
-    githubRepository := "jarrah-util",
   ).
   jvmSettings(
-    // Add JVM-specific settings here
-    scalacOptions ++= Seq(
-      "-encoding", "utf8", // Option and arguments on same line
-      "-Xfatal-warnings",  // New lines for each options
-      "-deprecation",
-    ),
+    libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0" % "provided",
   ).
   jsSettings(
-    // Add JS-specific settings here
-    scalaJSUseMainModuleInitializer := true,
+    
   )
 
+lazy val utilJS = util.js
+lazy val utilJVM = util.jvm
