@@ -134,16 +134,16 @@ class Vector3Test extends AnyFunSuite {
   }
   
   test("testConversions") {
-    assert(Vector3((0d, 0d, 0d)) == Vector3.zero)
-    assert(Vector3(List(0d, 0d, 0d)) == Vector3.zero)
-    assert(Vector3(List(1d, 0d, 0d, 2d)) == Vector3(1, 0, 0))
+    assert(Vector3.fromTuple((0d, 0d, 0d)) == Vector3.zero)
+    assert(Vector3.fromList(List(0d, 0d, 0d)) == Vector3.zero)
+    assert(Vector3.fromList(List(1d, 0d, 0d, 2d)) == Vector3(1, 0, 0))
     assert(Vector3.zero.toTuple == (0d, 0d, 0d))
     assert(List(0d, 0d, 0d) == Vector3.zero.toList)
   }
 
   test("testConversion fail") {
     assertThrows[IllegalArgumentException] {
-      Vector3(List(0d, 0d))
+      Vector3.fromList(List(0d, 0d))
     }
   }
 }

@@ -2,7 +2,7 @@ package com.jarrahtechnology.util
 
 import scala.scalajs.js.annotation._
 
-@JSExportTopLevel("LinearInterpPoints")
+@JSExportAll
 case class LinearInterpPoints(points: Seq[Vector2]) {
 
   val sortedPoints = points.sortWith { (a, b) => a._1 < b._1 }
@@ -10,12 +10,12 @@ case class LinearInterpPoints(points: Seq[Vector2]) {
 
   val max: Vector2 = sortedPoints.lastOption.getOrElse(Vector2.zero)
   val min: Vector2 = sortedPoints.headOption.getOrElse(Vector2.zero)
-  @JSExport val hasPoints = !points.isEmpty
+  val hasPoints = !points.isEmpty
 
   private def lerp(x: Double, start: Vector2, end: Vector2): Double =
     start.y + (end.y - start.y) * (x - start.x) / (end.x - start.x)
 
-  @JSExport def interp(x: Double): Double =
+  def interp(x: Double): Double =
     if (x>=max.x) max.y else if (x<=min.x) min.y else {
       val endIdx = sortedPoints.indexWhere(x <= _.x)
       lerp(x, sortedPoints(endIdx-1), sortedPoints(endIdx))

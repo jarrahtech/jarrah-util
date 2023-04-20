@@ -15,7 +15,7 @@ lazy val root = project.in(file(".")).
 lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     name := "jarrah-util",
-    version := "0.5.0",    
+    version := "0.5.1",    
 
     githubOwner := "jarrahtech",
     githubRepository := "jarrah-util",
@@ -27,12 +27,19 @@ lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
     libraryDependencies += "org.scalatest" %%% "scalatest-funsuite" % "3.2.15" % "test",
 
     wartremoverErrors ++= Warts.unsafe,
+
+    Test / logBuffered := false,    
   ).
   jvmSettings(
+    scalacOptions ++= Seq(
+      "-encoding", "utf8", 
+      "-Xfatal-warnings",  
+      "-deprecation",
+    ),
     libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0" % "provided",
+    Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, "-fW", "./target/scalatest.txt"),  
   ).
   jsSettings(
-    
   )
 
 lazy val utilJS = util.js

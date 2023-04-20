@@ -140,8 +140,8 @@ class Vector2Test extends AnyFunSuite {
   }
   
   test("testConversions") {
-    assert(Vector2((0d, 0d)) == Vector2.zero)
-    assert(Vector2(List(0d, 0d)) == Vector2.zero)
+    assert(Vector2.fromTuple((0d, 0d)) == Vector2.zero)
+    assert(Vector2.fromList(List(0d, 0d)) == Vector2.zero)
     assert(Vector2.zero.toTuple == (0d, 0d))
     assert(List(0d, 0d) == Vector2.zero.toList)
   }
