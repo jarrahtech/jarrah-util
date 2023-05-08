@@ -25,6 +25,7 @@ final case class InterpCurve(interpolator: Interpolator, points: Seq[Vector2]) {
     }
 }
 
+@JSExportAll
 object InterpCurve {
   def linear(points: Seq[Vector2]) = InterpCurve(identity, points)
   def linearUnit = InterpCurve(identity, List(Vector2.zero, Vector2.one))
