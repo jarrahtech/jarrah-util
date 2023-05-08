@@ -1,11 +1,11 @@
 package com.jarrahtechnology.util
 
-import scala.scalajs.js.annotation._
+import scala.scalajs.js.annotation.*
 
 @JSExportAll
 final case class Vector3(x: Double, y: Double, z: Double) {
   def magnitude: Double = x * x + y * y + z * z
-  def sqrDistance(other: Vector3): Double = subtract(other).magnitude
+  def sqrDistance(other: Vector3): Double = subtractPiecewise(other).magnitude
   def distance(other: Vector3): Double = math.sqrt(sqrDistance(other))
   def multiply(that: Double): Vector3 = Vector3(x * that, y * that, z * that)
   def op(fn: Double => Double): Vector3 = Vector3(fn(x), fn(y), fn(z))
@@ -13,8 +13,9 @@ final case class Vector3(x: Double, y: Double, z: Double) {
   def divide(that: Double): Vector3 = Vector3(x / that, y / that, z / that)
   def dot(that: Vector3): Double = x * that.x + y * that.y + z * that.z
   def cross(that: Vector3): Vector3 = Vector3(y * that.z - z * that.y, z * that.x - x * that.z, x * that.y - y * that.x)
-  def add(that: Vector3): Vector3 = Vector3(x + that.x, y + that.y, z + that.z)
-  def subtract(that: Vector3): Vector3 = Vector3(x - that.x, y - that.y, z - that.z)
+  def addToAll(that: Double): Vector3 = Vector3(x + that, y + that, z + that)
+  def addPiecewise(that: Vector3): Vector3 = Vector3(x + that.x, y + that.y, z + that.z)
+  def subtractPiecewise(that: Vector3): Vector3 = Vector3(x - that.x, y - that.y, z - that.z)
   def negate: Vector3 = Vector3(-x, -y, -z)
   def originDistance: Double = math.sqrt(magnitude)
   def normalized: Vector3 = divide(originDistance)

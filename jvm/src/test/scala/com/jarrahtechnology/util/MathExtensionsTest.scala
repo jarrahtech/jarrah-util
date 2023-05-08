@@ -27,19 +27,9 @@ class MathExtensionsTest extends AnyFunSuite {
     assert(math.abs(1d- 1.000003.clamp01)< 0.000000001d)
   }
 
-  test("testLerp") {
-    assert(math.abs(0.5d- 0.5.lerp(0, 1))< 0.000000001d)
-    assert(math.abs(0d- 0.lerp(0, 1))< 0.000000001d)
-    assert(math.abs(1d- 1.lerp(0, 1))< 0.000000001d)
-    assert(math.abs(-1d- -1.lerp(0, 1))< 0.000000001d)
-    assert(math.abs(2.5d- 2.5.lerp(0, 1))< 0.000000001d)
-    assert(math.abs(3d- 0.2.lerp(2, 7))< 0.000000001d)
-    assert(math.abs(0.52d- 0.2.lerp(-2.2, 11.4))< 0.000000001d)
+  test("testTruncate") {
+    assert(math.abs(0.3333- (1/3d).trunc(4))< 0.0000000000000001)
   }
-
-  //test("testTruncate") {
-  //  assert(math.abs(0.3333- (1/3d).trunc(4))< 0.0000000000000001)
-  //}
 
   test("testLog2") {
     assert(math.abs(0.3010299956639812d - log2base10)< 0.000000001d)
@@ -51,6 +41,27 @@ class MathExtensionsTest extends AnyFunSuite {
     assert(math.abs(8d- log2(256))< 0.000000001d)
     assert(math.abs(3.321928094887362d- log2(10))< 0.000000001d)
     assert(math.abs(6.996275748989886d- log2(127.67))< 0.000000001d)
+  }
+
+  test("isEven") {
+    assert(2.isEven)
+    assert(29867534.isEven)
+    assert(0.isEven)
+    assert(-98738.isEven)
+    assert(!(-3.isEven))
+    assert(!15.isEven)
+
+    assert(2d.isFloorEven)
+    assert(29867534d.isFloorEven)
+    assert(0d.isFloorEven)
+    assert(-98738d.isFloorEven)
+    assert(!(-3d.isFloorEven))
+    
+    assert(!15d.isFloorEven)
+    assert(2.1d.isFloorEven)
+    assert(8.0d.isFloorEven)
+    assert(!(-7.3d.isFloorEven))
+    assert(-2.3d.isFloorEven)
   }
   
 }

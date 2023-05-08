@@ -1,13 +1,12 @@
 ThisBuild / scalaVersion := "3.2.2"
 ThisBuild / organization := "com.jarrahtechnology"
 ThisBuild / versionScheme := Some("early-semver")
+ThisBuild / githubOwner := "jarrahtech"
+ThisBuild / githubRepository := "hex"
 
 lazy val root = project.in(file(".")).
   aggregate(util.js, util.jvm).
   settings(
-    githubOwner := "jarrahtech",
-    githubRepository := "jarrah-util",
-
     publish := {},
     publishLocal := {},
   )
@@ -15,10 +14,7 @@ lazy val root = project.in(file(".")).
 lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     name := "jarrah-util",
-    version := "0.5.1",    
-
-    githubOwner := "jarrahtech",
-    githubRepository := "jarrah-util",
+    version := "0.6.0",    
 
     resolvers ++= Resolver.sonatypeOssRepos("public"),
     resolvers += Resolver.githubPackages("jarrahtech"),

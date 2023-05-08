@@ -82,10 +82,18 @@ class Vector2Test extends AnyFunSuite {
   }
   
   test("testPlus") {
-    assert((Vector2.zero add Vector2.zero) == Vector2.zero)
-    assert((Vector2.zero add Vector2.one) == Vector2.one)
-    assert((Vector2.one add Vector2.one) == Vector2(2, 2))
-    assert((Vector2.one add Vector2(3, -7)) == Vector2(4, -6))
+    assert((Vector2.zero addPiecewise Vector2.zero) == Vector2.zero)
+    assert((Vector2.zero addPiecewise Vector2.one) == Vector2.one)
+    assert((Vector2.one addPiecewise Vector2.one) == Vector2(2, 2))
+    assert((Vector2.one addPiecewise Vector2(3, -7)) == Vector2(4, -6))
+  }
+
+  test("addToAll") {
+    assert((Vector2.zero addToAll 0) == Vector2.zero)
+    assert((Vector2.zero addToAll 1) == Vector2.one)
+    assert((Vector2.one addToAll -1) == Vector2.zero)
+    assert((Vector2.one addToAll 24) == Vector2(25, 25))
+    assert((Vector2(3,5) addToAll 4) == Vector2(7, 9))
   }
   
   test("testNegative") {
@@ -96,10 +104,10 @@ class Vector2Test extends AnyFunSuite {
   }
   
   test("testMinus") {
-    assert((Vector2.zero subtract Vector2.zero) == Vector2.zero)
-    assert((Vector2.zero subtract Vector2.one) == Vector2.one.negate)
-    assert((Vector2.one subtract Vector2.one) == Vector2.zero)
-    assert((Vector2.one subtract Vector2(3, -7)) == Vector2(-2, 8))
+    assert((Vector2.zero subtractPiecewise Vector2.zero) == Vector2.zero)
+    assert((Vector2.zero subtractPiecewise Vector2.one) == Vector2.one.negate)
+    assert((Vector2.one subtractPiecewise Vector2.one) == Vector2.zero)
+    assert((Vector2.one subtractPiecewise Vector2(3, -7)) == Vector2(-2, 8))
   }
   
   test("testDot") {

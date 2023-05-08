@@ -1,6 +1,6 @@
 package com.jarrahtechnology.util
 
-import scala.scalajs.js.annotation._
+import scala.scalajs.js.annotation.*
 
 @JSExportAll
 object RomanNumerals {

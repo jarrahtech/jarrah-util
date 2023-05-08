@@ -1,11 +1,11 @@
 package com.jarrahtechnology.util
 
-import scala.scalajs.js.annotation._
+import scala.scalajs.js.annotation.*
 
 @JSExportAll
 final case class Vector2(x: Double, y: Double) {
   def magnitude: Double = x * x + y * y
-  def sqrDistance(other: Vector2): Double = subtract(other).magnitude
+  def sqrDistance(other: Vector2): Double = subtractPiecewise(other).magnitude
   def distance(other: Vector2): Double = math.sqrt(sqrDistance(other))
   def multiply(that: Double): Vector2 = Vector2(x * that, y * that)
   def op(fn: Double => Double): Vector2 = Vector2(fn(x), fn(y))
@@ -13,8 +13,9 @@ final case class Vector2(x: Double, y: Double) {
   def divide(that: Double): Vector2 = Vector2(x / that, y / that)
   def dot(that: Vector2): Double = x * that.x + y * that.y
   def cross(that: Vector2): Vector2 = Vector2(y, -x)
-  def add(that: Vector2): Vector2 = Vector2(x + that.x, y + that.y)
-  def subtract(that: Vector2): Vector2 = Vector2(x - that.x, y - that.y)
+  def addToAll(that: Double): Vector2 = Vector2(x + that, y + that)
+  def addPiecewise(that: Vector2): Vector2 = Vector2(x + that.x, y + that.y)
+  def subtractPiecewise(that: Vector2): Vector2 = Vector2(x - that.x, y - that.y)
   def negate: Vector2 = Vector2(-x, -y)
   def normalized: Vector2 = divide(math.sqrt(magnitude))
   def lerp(end: Vector2, fraction: Double): Vector2 = Vector2(x + (end.x - x) * fraction, y + (end.y - y) * fraction)
