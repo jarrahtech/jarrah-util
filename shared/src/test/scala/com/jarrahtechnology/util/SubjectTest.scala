@@ -4,7 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class SubjectTest extends AnyFunSuite {
   
-  test("testToRoman") { 
+  test("subject test") { 
     val testSub = Subject[Int]()  
     @SuppressWarnings(Array("org.wartremover.warts.Var")) 
     var notify = 0
