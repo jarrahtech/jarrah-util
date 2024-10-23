@@ -2,6 +2,7 @@ package com.jarrahtechnology.util
 
 import org.scalatest.funsuite.AnyFunSuite
 
+// TODO: test clear()
 class SubjectTest extends AnyFunSuite {
   
   test("subject test") { 
