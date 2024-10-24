@@ -19,8 +19,8 @@ lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
     resolvers ++= Resolver.sonatypeOssRepos("public"),
     resolvers += Resolver.githubPackages("jarrahtech"),
 
-    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.15" % "test",
-    libraryDependencies += "org.scalatest" %%% "scalatest-funsuite" % "3.2.15" % "test",
+    libraryDependencies += "org.scalatest" %%% "scalatest" % "3.2.19" % "test",
+    libraryDependencies += "org.scalatest" %%% "scalatest-funsuite" % "3.2.19" % "test",
 
     wartremoverErrors ++= Warts.unsafe,
 
