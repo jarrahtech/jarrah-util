@@ -14,7 +14,7 @@ lazy val root = project.in(file(".")).
 lazy val util = crossProject(JSPlatform, JVMPlatform).in(file(".")).
   settings(
     name := "jarrah-util",
-    version := "0.7.0",    
+    version := "0.7.1",    
 
     resolvers ++= Resolver.sonatypeOssRepos("public"),
     resolvers += Resolver.githubPackages("jarrahtech"),
